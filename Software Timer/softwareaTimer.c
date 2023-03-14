@@ -61,6 +61,7 @@ void OneShotTimerCallback(void const * argument);
 /* USER CODE BEGIN PFP */
 BaseType_t Timer1start, Timer2start; 
 static TickType_t timeNow;
+uint32_t Timeout = 0;
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -271,6 +272,13 @@ void AutoRelodeTimerCallback(void const * argument)
 		send_string("Autocallback../r/n");
 	//send_string((char *)timeNow);
 	//send_string("/r/n");
+	Timeout++;
+	
+	/* if I want to stop autoreload timmer 
+	if (Timeout == 10){
+			send_string("StopTimer ../r/n");
+			osTimerStop(AutoRelodeTimerHandle);
+	}*/
   /* USER CODE END AutoRelodeTimerCallback */
 }
 
